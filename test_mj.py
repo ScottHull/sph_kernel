@@ -5,7 +5,9 @@ import matplotlib.pyplot as plt
 
 
 def calcSmoothedMass(kernel, m_j, dr, h):
-    return m_j * kernel.mass_intW(dr=dr, h=h)
+    # return m_j * kernel.mass_intW(dr=dr, h=h)
+    H = kernel.support_radius * h
+    return 4 * pi * (H ** 3) * m_j * kernel.intW_s2(dr=dr, h=h)
 
 
 kernel = WendlandC6()

@@ -49,3 +49,14 @@ class WendlandC6:
         coeff = (1.0 / 16.0) * s ** 3
         return coeff * ((3120 * s ** 11) - (24255 * s ** 10) + (80080 * s ** 9) - (143325 * s ** 8)
                         + (144144 * s ** 7) - (70070 * s ** 6) + (12870 * s ** 4) - (3003 * s ** 2) + 455)
+
+    def intW_s2(self, dr, h):
+        # int_0^s_ij W(s) s^2 ds
+        dr, H, s = self.__reformat(dr=dr, h=h)
+        coeff = (1 / (64 * pi * H ** self.dimension)) * (s ** 3)
+        var1 = ((624 * s ** 2) - (4851 * s) + 16016)
+        var2 = s * var1 - 28665
+        var3 = (5 * s) * var2 + 144144
+        var4 = s * var3 - 70070
+        var5 = var4 * (s ** 6)
+        return coeff * ((12870 * s ** 4) - (3003 * s ** 2) + var5 + 455)
