@@ -43,3 +43,9 @@ class WendlandC6:
         dr, H, s = self.__reformat(dr=dr, h=h)
         upper_bound = s
         return integrate.quad(self.__numericalW, lower_bound, upper_bound, args=(dr, h,))[0]
+
+    def mass_intW(self, dr, h):
+        dr, H, s = self.__reformat(dr=dr, h=h)
+        coeff = (1.0 / 16.0) * s ** 3
+        return coeff * ((3120 * s ** 11) - (24255 * s ** 10) + (80080 * s ** 9) - (143325 * s ** 8)
+                        + (144144 * s ** 7) - (70070 * s ** 6) + (12870 * s ** 4) - (3003 * s ** 2) + 455)

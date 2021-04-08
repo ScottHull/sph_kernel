@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 
 def calcSmoothedMass(kernel, m_j, dr, h):
-    return 4 * pi * m_j * (h ** 3) * kernel.intW(dr=dr, h=h)
+    return m_j * kernel.mass_intW(dr=dr, h=h)
 
 
 kernel = WendlandC6()
@@ -24,6 +24,7 @@ ax.plot(
     color='black'
 )
 ax.axhline(m_j, color='red', linewidth=2.0, linestyle="--", label="m_j")
+ax.axvline(2 * h, color='blue', linewidth=2.0, linestyle="--", label="2h")
 ax.set_xlabel("s = r / h")
 ax.set_ylabel("m_j^*")
 ax.set_title("Wendlend C6")
